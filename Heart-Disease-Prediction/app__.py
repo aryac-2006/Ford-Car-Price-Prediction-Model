@@ -1,11 +1,21 @@
 import streamlit as st
 import pandas as pd
+import os
 import joblib
 
-# _________Load Saved Model_________
-model = joblib.load("heart_model.pkl")
-scaler = joblib.load("scaler.pkl")
-encoded_columns = joblib.load("columns.pkl")
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+model = joblib.load(
+    os.path.join(BASE_DIR, "heart_model.pkl")
+)
+
+scaler = joblib.load(
+    os.path.join(BASE_DIR, "scaler.pkl")
+)
+
+encoded_columns = joblib.load(
+    os.path.join(BASE_DIR, "columns.pkl")
+)
 
 # _______Streamlit Page Configuration_______
 st.set_page_config(
